@@ -1,0 +1,16 @@
+#*******************************
+#
+# Repast HPC Tutorial 
+# ENVIRONMENT DEFINITIONS
+#
+#*******************************
+
+MPICXX=/Users/calebparikh/sfw/MPICH/bin/mpicxx -std=c++11 
+
+BOOST_INCLUDE=-I/Users/calebparikh/sfw/Boost/Boost_1.61/include/
+BOOST_LIB_DIR=-L/Users/calebparikh/sfw/Boost/Boost_1.61/lib/
+BOOST_LIBS=-lboost_mpi-mt -lboost_serialization-mt -lboost_system-mt -lboost_filesystem-mt
+
+REPAST_HPC_INCLUDE=-I/Users/calebparikh/sfw/repast_hpc-2.2.0/include
+REPAST_HPC_LIB_DIR=-L/Users/calebparikh/sfw/repast_hpc-2.2.0/lib
+REPAST_HPC_LIB=-lrepast_hpc-2.2.0

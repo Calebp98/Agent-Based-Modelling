@@ -1,0 +1,232 @@
+% script for plotting agent based modelling results
+
+electric = csvread('electricBikes.csv',1,0);
+groups = csvread('groups.csv',1,0);
+bikeProlif = csvread('investment.csv',1,0);
+none = csvread('start.csv',1,0);
+paths = csvread('paths.csv',1,0);
+paths2 = csvread('paths2.csv',1,0);
+% display(M)
+
+%% plotting all bike values
+close all
+paths = paths2;
+
+figure()
+plot(none(:,1))
+hold on
+plot(electric(:,1))
+hold on
+plot(paths2(:,1))
+hold on
+plot(bikeProlif(:,1))
+hold on
+plot(groups(:,1))
+legend("No Policy","Electric Bikes","Paths","Subsidised Bikes","Groups",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+%%
+figure()
+% plot(none(:,1))
+hold on
+plot((((electric(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1)))))/1000)
+hold on
+plot(((paths2(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1))))/200)
+hold on
+plot(((bikeProlif(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1))))/11508)
+hold on
+% plot(((groups(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1))))/1)
+
+legend("Electric Bikes","Paths","Subsidised Bikes",'FontSize', 20)
+title('Adoption per £1000 of investment','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+%%
+
+%plot no policy
+figure()
+plot(none(:,1)/mean(none(:,1)))
+hold on
+plot(none(:,2)/mean(none(:,2)))
+hold on
+plot(none(:,3)/mean(none(:,3)))
+
+legend("Bike","Walk","Car",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+figure()
+plot(none(:,6))
+hold on
+plot(none(:,7))
+hold on
+plot(none(:,8))
+legend("Car","Bike","Walk",'FontSize', 20)
+title('Mode Searches over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Number of Searches','FontSize', 20)
+set(gca,'FontSize',20)
+
+%%
+%plot electric bike policy
+% figure()
+% plot((electric(:,1)/mean(electric(:,1))-mean(none(:,1) )))
+% hold on
+% plot((electric(:,2)/mean(electric(:,2)))-mean(none(:,2)))
+% hold on
+% plot((electric(:,3)/mean(electric(:,3)))-mean(none(:,3)))
+
+% plot(none(:,1)/mean(none(:,1)))
+% hold on
+% plot(none(:,2)/mean(none(:,1)))
+% hold on
+% plot(none(:,3)/mean(none(:,3)))
+
+figure()
+
+plot(((electric(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1)))))
+hold on
+plot(((electric(:,2)/mean(none(:,2))))-(none(:,2)/mean(none(:,2))))
+hold on
+plot(((electric(:,3)/mean(none(:,3))))-(none(:,3)/mean(none(:,3))))
+
+legend("Bike","Walk","Car",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+figure()
+plot(electric(:,6))
+hold on
+plot(electric(:,7))
+hold on
+plot(electric(:,8))
+legend("Car","Bike","Walk",'FontSize', 20)
+title('Mode Searches over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Number of Searches','FontSize', 20)
+set(gca,'FontSize',20)
+
+
+%%
+%plot electric bike policy - control
+figure()
+plot((((electric(:,1)))-(none(:,1)))/mean(none(:,1)))
+hold on
+plot((((electric(:,2)))-(none(:,2)))/mean(none(:,2)))
+hold on 
+plot((((electric(:,3)))-(none(:,3)))/mean(none(:,3)))
+
+legend("Bike","Walk","Car",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Count of Agents Relative to Control','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+figure()
+
+plot(electric(:,6) - none(:,6))
+hold on
+plot(electric(:,7) - none(:,7))
+hold on
+plot(electric(:,8) - none(:,8))
+legend("Car","Bike","Walk",'FontSize', 20)
+title('Mode Searches over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Number of Searches','FontSize', 20)
+set(gca,'FontSize',20)
+%%
+%plot bike prolif policy
+figure()
+plot((((bikeProlif(:,1)))-(none(:,1)))/mean(none(:,1)))
+hold on
+plot((((bikeProlif(:,2)))-(none(:,2)))/mean(none(:,2)))
+hold on
+plot((((bikeProlif(:,3)))-(none(:,3)))/mean(none(:,3)))
+
+legend("Bike","Walk","Car",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+figure()
+plot(bikeProlif(:,6))
+hold on
+plot(bikeProlif(:,7))
+hold on
+plot(bikeProlif(:,8))
+legend("Car","Bike","Walk",'FontSize', 20)
+title('Mode Searches over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Number of Searches','FontSize', 20)
+set(gca,'FontSize',20)
+
+%%
+% paths
+
+figure()
+
+plot(((paths(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1)))))
+hold on
+plot(((paths(:,2)/mean(none(:,2))))-(none(:,2)/mean(none(:,2))))
+hold on
+plot(((paths(:,3)/mean(none(:,3))))-(none(:,3)/mean(none(:,3))))
+
+legend("Bike","Walk","Car",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+figure()
+plot(paths(:,6))
+hold on
+plot(paths(:,7))
+hold on
+plot(paths(:,8))
+legend("Car","Bike","Walk",'FontSize', 20)
+title('Mode Searches over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Number of Searches','FontSize', 20)
+set(gca,'FontSize',20)
+%%
+%groups
+figure()
+plot(((groups(:,1)/mean(none(:,1)))-(none(:,1)/mean(none(:,1)))))
+hold on
+plot(((groups(:,2)/mean(none(:,2))))-(none(:,2)/mean(none(:,2))))
+hold on
+plot(((groups(:,3)/mean(none(:,3))))-(none(:,3)/mean(none(:,3))))
+
+legend("Bike","Walk","Car",'FontSize', 20)
+title('Mode Adoption over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Normalised Count of Agents','FontSize', 20) 
+set(gca,'FontSize',20)
+
+
+figure()
+plot(groups(:,6) - none(:,6))
+hold on
+plot(groups(:,7) - none(:,7))
+hold on
+plot(groups(:,8) - none(:,8))
+legend("Car","Bike","Walk",'FontSize', 20)
+title('Mode Searches over Simulation','FontSize', 20)
+xlabel('Iteration','FontSize', 20) 
+ylabel('Number of Searches','FontSize', 20)
+set(gca,'FontSize',20)
